@@ -12,7 +12,7 @@ from datetime import datetime
 import pymysql
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY")
+app.secret_key = os.getenv("SECRET_KEY")
 
 CORS(app)
 
@@ -21,10 +21,10 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # 🔹 DB CONNECTION
 db = mysql.connector.connect(
-    host=os.environ.get("DB_HOST"),
-    user=os.environ.get("DB_USER"),
-    password=os.environ.get("DB_PASSWORD"),
-    database=os.environ.get("DB_NAME")
+    host=os.getenv("DB_HOST"),
+    user=os.getenv("DB_USER"),
+    password=os.getenv("DB_PASSWORD"),
+    database=os.getenv("DB_NAME")
 )
 cursor = db.cursor(dictionary=True)
 def verify_recaptcha(token):
