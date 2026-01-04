@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Track Complaint{% endblock %}
+
+{% block content %}
+
+<div class="track-page">
+
+  <!-- TRACK FORM (ALWAYS VISIBLE) -->
+  <h2>Track Complaint Status</h2>
+
+  <form method="POST" class="track-form">
+    <input type="number"
+           name="complaint_id"
+           placeholder="Enter Complaint ID"
+           required>
+    <button type="submit">Track</button>
+  </form>
+
+  {% if error %}
+    <p class="error">{{ error }}</p>
+  {% endif %}
+
+  <!-- =============================
+       YOUR EXISTING RESULT BLOCK
+       ============================= -->
+  {% if show_result %}
+  <div class="track-wrapper">
+
+    <!-- LEFT : STATUS STEPPER -->
+    <div class="status-stepper">
+      {% set all = ["Submitted","Assigned","Visited","In_Progress","Resolved","Closed"] %}
+      {% set done = history | map(attribute='status') | list %}
+      {% for s in all %}
+        {% for s in all %}
+  {% set item = history | selectattr("status","equalto",s) | first %}
+  <div class="step {% if item %}done{% endif %}">
+    {{ s.replace("_"," ") }}
+    {% if item %}
+      <span class="step-date">{{ item.datetime }}</span>
+    {% endif %}
+  </div>
+{% endfor %}
+
+      {% endfor %}
+    </div>
+
+    <!-- RIGHT : DETAILS -->
+    <div class="track-details">
+
+      <h3>Complaint #{{ complaint.complaint_id }}</h3>
+
+      <p><b>Issue:</b> {{ complaint.issue_type }}</p>
+      <p><b>Department:</b> {{ complaint.department }}</p>
+      <p><b>Priority:</b> {{ complaint.priority }}</p>
+      <p><b>Municipality:</b> {{ complaint.municipality }}</p>
+      <p><b>Address:</b> {{ complaint.address }}</p>
+
+      <hr>
+
+<h4>Assigned Authority (ETA In-Charge)</h4>
+
+{% if authority %}
+  <p><b>Name:</b> {{ authority.name }}</p>
+  <p><b>Department:</b> {{ authority.department }}</p>
+  <p><b>Email:</b>
+    <a href="mailto:{{ authority.email }}">
+      {{ authority.email }}
+    </a>
+  </p>
+{% else %}
+  <p>Authority not yet assigned.</p>
+{% endif %}
+
+
+    </div>
+  </div>
+  {% endif %}
+
+</div>
+
+{% endblock %}

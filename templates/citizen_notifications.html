@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Notifications{% endblock %}
+
+{% block content %}
+<div class="notifications-page">
+    <h2>Your Complaint Updates</h2>
+    
+    {% if notifications %}
+        <ul class="notification-list">
+            {% for n in notifications %}
+                <li class="notification-item">
+                    <strong>Complaint ID:</strong> {{ n.complaint_id }}<br>
+                    <strong>Status:</strong> {{ n.status }}<br>
+                    <strong>Updated By:</strong> {{ n.updated_by_name if n.updated_by_name else 'System' }}<br>
+                    <small>{{ n.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No notifications yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

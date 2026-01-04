@@ -1,0 +1,20 @@
+<nav class="navbar">
+  <div class="logo">LocalFix AI</div>
+
+  <div class="nav-links">
+    <a href="{{ url_for('report') }}" class="active">Report Issue</a>
+    <a href="{{ url_for('citizen_dash') }}">Notifications</a>
+    <a href="{{ url_for('track') }}">Track Status</a>
+
+    <!-- USER DROPDOWN -->
+    <div class="user-dropdown">
+      <span class="user" id="userDropdownToggle">{{ session.get('user_name', 'Citizen') }} ▼</span>
+
+      <div class="dropdown-menu" id="userDropdownMenu">
+        <a href="{{ url_for('citizen_profile') }}">Profile</a>
+        <a href="{{ url_for('citizen_settings') }}">Settings</a>
+        <a href="{{ url_for('logout') }}" id="logoutLink">Logout</a>
+      </div>
+    </div>
+  </div>
+</nav>

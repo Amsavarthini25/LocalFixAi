@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>System Logs</title>
+<style>
+body{font-family:Arial;background:#f4f6f8}
+table{border-collapse:collapse;width:90%;margin:50px auto}
+th,td{border:1px solid #ccc;padding:10px}
+th{background:#6f42c1;color:#fff}
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center">Complaint Status Logs</h2>
+
+<table>
+<tr>
+<th>Complaint ID</th>
+<th>Status</th>
+<th>Updated By</th>
+<th>Time</th>
+</tr>
+
+{% for log in logs %}
+<tr>
+<td>{{ log.complaint_id }}</td>
+<td>{{ log.status }}</td>
+<td>{{ log.updated_by }}</td>
+<td>{{ log.timestamp }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<center><a href="/admin/dashboard">⬅ Back</a></center>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LocalFixAI - Civic Complaint System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+  <div class="logo"><a href="/">LocalFixAI</a></div>
+  <div>
+    <a href="{{ url_for('citizen_signup') }}">Sign Up as Citizen</a>
+  </div>
+</nav>
+
+<main class="home-main">
+  <h1>Empowering Citizens,<br>Enabling Authorities.</h1>
+  <p>Report issues instantly with AI analysis. Track resolution in real-time.<br>
+     Bridging the gap between people and governance.</p>
+
+  <div class="home-buttons">
+    <a class="btn-primary" href="{{ url_for('citizen_signup') }}">Report an Issue</a>
+    <a class="btn-secondary" href="#">View Public Map</a>
+  </div>
+
+  <!-- 🌍 Public Transparency Dashboard Button -->
+  <div style="text-align:center;">
+    <a href="{{ url_for('public_dashboard') }}" class="dashboard-btn">
+      🌍 View Public Transparency Dashboard
+    </a>
+  </div>
+
+  <div class="home-cards">
+    <div class="card">
+      <h3>Citizen Portal</h3>
+      <p>Report issues, upload photos, and track resolution status in real-time.</p>
+      <a href="{{ url_for('citizen_signin') }}">Login Access →</a>
+    </div>
+
+    <div class="card">
+      <h3>Authority Portal</h3>
+      <p>Manage department complaints, view AI insights, and update status.</p>
+      <a href="{{ url_for('authority_signin') }}">Login Access →</a>
+    </div>
+
+    <div class="card">
+      <h3>Admin Console</h3>
+      <p>System oversight, department management, and overall analytics.</p>
+      <a href="{{ url_for('admin_signin') }}">Login Access →</a>
+    </div>
+  </div>
+</main>
+
+<style>
+.dashboard-btn{
+  display:inline-block;
+  margin-top:25px;
+  padding:14px 28px;
+  background:linear-gradient(135deg,#7f00ff,#e100ff);
+  color:#fff;
+  font-size:18px;
+  border-radius:30px;
+  text-decoration:none;
+  transition:.4s;
+}
+.dashboard-btn:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 25px rgba(225,0,255,.7);
+}
+</style>
+
+</body>
+</html>

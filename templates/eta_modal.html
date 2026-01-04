@@ -1,0 +1,44 @@
+<!-- ETA MODAL -->
+<div id="etaModal" class="modal" style="display:none;">
+  <div class="modal-content">
+
+    <h3>ETA Management</h3>
+
+    <!-- System ETA -->
+    <p id="etaText" style="margin-bottom:10px;"></p>
+
+    <!-- Final ETA -->
+    <label for="finalEta"><b>Final ETA (days)</b></label>
+    <input type="number"
+           id="finalEta"
+           min="1"
+           style="width:100%; padding:6px; margin:8px 0;">
+
+    <!-- Override -->
+    <button class="btn-secondary"
+            onclick="showOverride()">
+        Override ETA
+    </button>
+
+    <!-- Override section -->
+    <div id="overrideSection" style="display:none; margin-top:10px;">
+      <label for="overrideReason"><b>Override Reason</b></label>
+      <textarea id="overrideReason"
+                rows="3"
+                style="width:100%; padding:6px;"
+                placeholder="Reason for overriding ETA"></textarea>
+    </div>
+
+    <!-- Actions -->
+    <div style="margin-top:15px; text-align:right;">
+      <button class="btn-primary" onclick="acceptEta()">
+          Save ETA
+      </button>
+      <button class="btn-secondary" onclick="closeModal()">
+          Cancel
+      </button>
+    </div>
+
+  </div>
+</div>
+

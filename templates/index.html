@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}LocalFix AI | Report Issue{% endblock %}
+
+{% block content %}
+
+<div class="page-container">
+
+<h2>Report an Issue</h2>
+<p class="subtitle">Help us identify and fix local problems.</p>
+
+<div class="card">
+
+<form id="complaintForm" method="POST" action="/citizen/report" enctype="multipart/form-data">
+
+
+<!-- IMAGE UPLOAD -->
+<div class="upload-wrapper">
+  <label for="imageInput" class="upload-card">
+      <input type="file" id="imageInput" name="image" accept="image/*" hidden required>
+
+      <div class="upload-inner">
+          <div class="upload-circle">
+              ⬆
+          </div>
+          <p class="upload-main-text">Click to upload or drag and drop</p>
+          <span class="upload-sub-text">JPG, PNG up to 5MB</span>
+      </div>
+  </label>
+</div>
+
+<!-- IMAGE PREVIEW -->
+<div id="previewContainer" style="display:none;">
+    <img id="imagePreview" width="100%">
+</div>
+
+<label>Description (Optional)</label>
+<textarea id="description" name="description" placeholder="Describe the issue briefly..."></textarea>
+
+<h4>Auto Detected Details</h4>
+
+<label>Problem Category</label>
+<input type="text" id="issueType" readonly placeholder="Auto detected">
+
+<label>Department</label>
+<input type="text" id="department" readonly placeholder="Auto detected">
+
+<label>Priority</label>
+<input type="text" id="priority" readonly placeholder="Auto detected">
+
+<button type="button" id="nextBtn">Next: Location →</button>
+
+</form>
+</div>
+</div>
+
+{% endblock %}

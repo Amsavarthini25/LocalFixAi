@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Complaints</title>
+<style>
+body{font-family:Arial;background:#f4f6f8}
+table{border-collapse:collapse;width:98%;margin:40px auto}
+th,td{border:1px solid #ccc;padding:8px;font-size:14px}
+th{background:#343a40;color:#fff}
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center">Complaints</h2>
+
+<table>
+<tr>
+<th>ID</th>
+<th>Issue</th>
+<th>Department</th>
+<th>Priority</th>
+<th>City</th>
+<th>Status</th>
+</tr>
+
+{% for c in complaints %}
+<tr>
+<td>{{ c.complaint_id }}</td>
+<td>{{ c.issue_type }}</td>
+<td>{{ c.department }}</td>
+<td>{{ c.priority }}</td>
+<td>{{ c.city }}</td>
+<td>{{ c.status or "Submitted" }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<center><a href="/admin/dashboard">⬅ Back</a></center>
+
+</body>
+</html>

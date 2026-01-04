@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Location Mapping{% endblock %}
+
+{% block content %}
+
+<div class="location-page">
+
+<h1>Location Mapping & Municipality Identification</h1>
+
+<div class="card">
+
+    <input id="street" placeholder="Street / Door No">
+    <input id="area" placeholder="Area / Locality">
+    <input id="cityInput" placeholder="City">
+    <input id="stateInput" placeholder="State">
+    <input id="pincode" placeholder="Pincode (optional)">
+
+    <button onclick="detectLocation()">Detect Location</button>
+
+    <div class="result">
+        <p><b>Latitude:</b> <span id="lat">-</span></p>
+        <p><b>Longitude:</b> <span id="lng">-</span></p>
+        <p><b>City:</b> <span id="city">-</span></p>
+        <p><b>State:</b> <span id="state">-</span></p>
+        <p><b>Authority Type:</b> <span id="authorityType">-</span></p>
+        <p><b>Authority Name:</b> <span id="authorityName">-</span></p>
+        <p><b>Ward:</b> <span id="ward">-</span></p>
+        <p><b>Zone:</b> <span id="zone">-</span></p>
+    </div>
+
+    <div style="display:flex; justify-content:space-between; margin-top:20px">
+        <button onclick="window.location.href='/citizen/report'">← Back</button>
+        <button onclick="goToReview()">Next: Review →</button>
+    </div>
+
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<form action="/citizen_signup" method="POST">
+  <h2>Citizen Registration</h2>
+
+  <input name="name" placeholder="Full Name" required>
+  <input name="email" type="email" placeholder="Email" required>
+  <input name="phone" placeholder="Phone Number" required>
+  <input name="password" type="password" placeholder="Password" required>
+
+  <!-- CAPTCHA -->
+  <div class="g-recaptcha" data-sitekey="{{ site_key }}"></div>
+
+  {% if error %}
+    <p style="color:red;">{{ error }}</p>
+  {% endif %}
+
+  <button type="submit">Register</button>
+</form>

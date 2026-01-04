@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Complaint Detail{% endblock %}
+
+{% block content %}
+<div class="detail-container">
+
+<h2>Complaint #{{ complaint["complaint_id"] }}</h2>
+
+<p><b>Issue:</b> {{ complaint["issue_type"] }}</p>
+<p><b>Priority:</b> {{ complaint["priority"] }}</p>
+<p><b>Status:</b> {{ complaint["current_status"] }}</p>
+
+<!-- STATUS ACTION BUTTON (AUTO BASED ON CURRENT STATUS) -->
+<div id="status-actions"
+     data-cid="{{ complaint['complaint_id'] }}"
+     data-status="{{ complaint['current_status'] }}">
+</div>
+
+<hr>
+
+<h3>ETA</h3>
+
+{% if complaint["estimated_days"] %}
+    <p>
+        Estimated Arrival :
+        <b>{{ complaint["estimated_days"] }} days</b>
+        <button class="btn-primary"
+                onclick="openEtaPopup({{ complaint['complaint_id'] }}, true)">
+            View / Override
+        </button>
+    </p>
+{% else %}
+    <button class="btn-primary"
+            onclick="openEtaPopup({{ complaint['complaint_id'] }}, false)">
+        Determine ETA
+    </button>
+{% endif %}
+
+</div>
+
+
+<!-- ETA MODAL -->
+<div id="etaModal" class="modal">
+  <div class="modal-content">
+
+      <h3>System Suggested ETA</h3>
+      <p id="etaText">Loading...</p>
+
+      <label>Estimated Days</label>
+      <input type="number" id="finalEta" min="1">
+
+      <div class="modal-actions">
+        <button class="btn-warning" onclick="showOverride()">Manual Override</button>
+        <button class="btn-close" onclick="closeModal()">Close</button>
+        <button class="btn-primary" onclick="acceptEta()">Accept</button>
+      </div>
+
+      <div id="overrideSection" style="display:none; margin-top:12px;">
+          <textarea id="overrideReason" placeholder="Reason for override (optional)"></textarea>
+      </div>
+
+  </div>
+</div>
+{% endblock %}

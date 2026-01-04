@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Complaint Submitted | LocalFixAI{% endblock %}
+
+{% block content %}
+<!-- ================= SUCCESS CARD ================= -->
+<div class="success-container">
+  <div class="success-icon">✔</div>
+  <h2>Complaint Submitted Successfully</h2>
+  <p>Your complaint has been registered. Please save the reference number below to track its status.</p>
+
+  <div class="complaint-id-box">
+    Complaint ID: <span id="complaintIdText"></span>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn btn-primary" onclick="trackComplaint()">Track Complaint</button>
+    <button class="btn btn-secondary" onclick="goHome()">Go to Home</button>
+  </div>
+</div>
+
+<script>
+  // Load complaint ID
+  const complaintId = sessionStorage.getItem("complaintId");
+  document.getElementById("complaintIdText").innerText =
+    complaintId ? complaintId : "Not Available";
+
+  function trackComplaint() {
+    // Optional: store the complaint ID in query string
+    const cid = complaintId ? `?complaint_id=${complaintId}` : "";
+    window.location.href = "/track" + cid;
+  }
+
+  function goHome() {
+    sessionStorage.clear();
+    window.location.href = "/";
+  }
+</script>
+{% endblock %}

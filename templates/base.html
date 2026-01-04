@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}LocalFix AI{% endblock %}</title>
+
+    <!-- ✅ CORRECT CSS PATH -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    {% block head %}{% endblock %}
+</head>
+<body>
+
+{% if session.get("role") == "citizen" %}
+    {% include "partials/_navbar_citizen.html" %}
+
+{% elif session.get("role") == "authority" %}
+    {% include "partials/_navbar_authority.html" %}
+
+{% elif session.get("role") == "admin" %}
+    {% include "partials/_navbar_admin.html" %}
+{% endif %}
+
+{% block content %}{% endblock %}
+
+</body>
+</html>

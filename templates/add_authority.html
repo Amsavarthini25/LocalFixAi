@@ -1,0 +1,39 @@
+<head>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+
+<form action="/admin/add_authority" method="POST">
+  <h2>Add Authority Officer</h2>
+
+  <input name="name" placeholder="Name" required>
+  <input name="email" type="email" placeholder="Email" required>
+  <input name="password" type="password" placeholder="Password" required>
+    <!-- Department dropdown -->
+  <label for="department">Department:</label>
+  <select name="department" id="department" required>
+    <option value="">Select Department</option>
+    <option value="Electrical">Electrical</option>
+    <option value="Sanitation">Sanitation</option>
+    <option value="Water Supply">Water Supply</option>
+    <option value="Roads">Roads</option>
+    <option value="Parks">Parks & Landscaping</option>
+    <option value="Health">Health</option>
+    <option value="Education">Education</option>
+    <option value="Transport">Transport</option>
+    <option value="Fire & Emergency Services">Fire & Emergency Services</option>
+    <option value="Building / Zoning">Building / Zoning</option>
+  </select>
+  <label for="role">Role:</label>
+<select name="role" id="role" required>
+  <option value="">Select Role</option>
+  <option value="Field Officer">Field Officer</option>
+  <option value="Engineer">Engineer</option>
+  <option value="Assistant Commissioner">Assistant Commissioner</option>
+  <option value="Commissioner">Commissioner</option>
+</select>
+
+  <input name="municipality" id="municipality" required>
+  <input name="phone" placeholder="Phone Number" required>
+
+  <button type="submit">Create Authority</button>
+</form>

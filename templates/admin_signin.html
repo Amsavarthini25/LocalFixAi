@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">CivicAI</div>
+    <div class="nav-links">
+        <a href="/">Home</a>
+    </div>
+</div>
+
+<div class="page-container">
+    <h2>Admin Login</h2>
+    <p class="subtitle">System administrator access</p>
+
+    <div class="card">
+        <form method="POST">
+            <input type="email" name="email" placeholder="Admin Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+
+            {% if error %}
+                <p style="color:red;">{{ error }}</p>
+            {% endif %}
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

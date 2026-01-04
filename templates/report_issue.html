@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Report Issue{% endblock %}
+
+{% block content %}
+<div class="report-container">
+
+  <div class="report-card">
+
+    <!-- TEXT INPUT -->
+    <label class="section-title">Describe the Issue</label>
+    <textarea id="description"
+              placeholder="Describe the issue briefly..."
+              rows="4"></textarea>
+
+    <button onclick="submitText()">Submit</button>
+
+    <!-- AUTO DETECTED DETAILS -->
+    <h4 class="auto-title">Auto Detected Details</h4>
+
+    <label>Problem Category</label>
+    <input id="issueType" readonly>
+
+    <label>Department</label>
+    <input id="department" readonly>
+
+    <label>Priority</label>
+    <input id="priority" readonly>
+
+    <button id="nextBtn" class="next-btn" disabled>
+      Next: Location →
+    </button>
+
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='report.js') }}"></script>
+{% endblock %}

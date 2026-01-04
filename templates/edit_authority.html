@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Edit Authority</title>
+<style>
+body{
+    font-family:Arial;
+    background:#f4f6f8;
+}
+.card{
+    width:400px;
+    margin:80px auto;
+    background:#fff;
+    padding:25px;
+    border-radius:8px;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
+h2{text-align:center;}
+input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+button{
+    width:100%;
+    padding:10px;
+    background:#28a745;
+    border:none;
+    color:white;
+    font-size:16px;
+    border-radius:4px;
+}
+button:hover{
+    background:#218838;
+}
+a{
+    display:block;
+    text-align:center;
+    margin-top:15px;
+    text-decoration:none;
+    color:#007bff;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h2>Edit Authority</h2>
+
+<form method="POST" action="/admin/update_authority/{{ authority.authority_id }}">
+    <label>Department</label>
+    <input name="department" value="{{ authority.department }}" required>
+
+    <label>Municipality</label>
+    <input name="municipality" value="{{ authority.municipality }}" required>
+
+    <button type="submit">Update Authority</button>
+</form>
+
+<a href="/admin/manage_authority">⬅ Back</a>
+</div>
+
+</body>
+</html>

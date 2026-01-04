@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}LocalFixAI – Review Complaint{% endblock %}
+
+{% block content %}
+<!-- ================= PAGE BODY ================= -->
+<div class="page-container">
+    <h2>Review Your Complaint</h2>
+    <p class="subtitle">Verify all information before final submission</p>
+
+    <div class="card">
+
+        <!-- 🔹 ISSUE DETAILS -->
+        <label>Issue Type</label>
+        <input id="reviewIssueType" readonly>
+
+        <label>Department</label>
+        <input id="reviewDepartment" readonly>
+
+        <label>Priority</label>
+        <input id="reviewPriority" readonly>
+
+        <!-- 🔹 LOCATION DETAILS -->
+        <label>Municipality / Corporation</label>
+        <input id="reviewMunicipality" readonly>
+
+        <label>Latitude</label>
+        <input id="reviewLatitude" readonly>
+
+        <label>Longitude</label>
+        <input id="reviewLongitude" readonly>
+
+        <!-- 🔹 BUTTONS -->
+        <div style="display:flex; justify-content:space-between; margin-top:20px">
+            <button onclick="window.location.href='/location'">Back</button>
+            <button onclick="submitComplaint()">Submit Complaint</button>
+        </div>
+    </div>
+</div>
+
+<script>
+/* Autofill review fields from sessionStorage */
+window.onload = function(){
+    reviewIssueType.value    = sessionStorage.getItem("issueType") || "";
+    reviewDepartment.value   = sessionStorage.getItem("department") || "";
+    reviewPriority.value     = sessionStorage.getItem("priority") || "";
+    reviewMunicipality.value = sessionStorage.getItem("municipality") || "";
+    reviewLatitude.value     = sessionStorage.getItem("latitude") || "";
+    reviewLongitude.value    = sessionStorage.getItem("longitude") || "";
+};
+</script>
+{% endblock %}

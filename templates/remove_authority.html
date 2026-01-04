@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Remove Authority</title>
+<style>
+body{
+    font-family:Arial;
+    background:#f4f6f8;
+}
+.container{
+    width:90%;
+    max-width:900px;
+    margin:50px auto;
+    background:#fff;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 4px 12px rgba(0,0,0,.1);
+}
+h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+th, td{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+    text-align:center;
+}
+th{
+    background:#007bff;
+    color:white;
+}
+tr:hover{
+    background:#f1f1f1;
+}
+.delete-btn{
+    color:white;
+    background:#dc3545;
+    padding:6px 12px;
+    border-radius:4px;
+    text-decoration:none;
+}
+.delete-btn:hover{
+    background:#c82333;
+}
+.back{
+    margin-top:20px;
+    display:inline-block;
+    text-decoration:none;
+    color:#007bff;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Remove Authority</h2>
+
+<table>
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Department</th>
+    <th>Municipality</th>
+    <th>Action</th>
+</tr>
+
+{% for a in authorities %}
+<tr>
+    <td>{{ a.authority_id }}</td>
+    <td>{{ a.name }}</td>
+    <td>{{ a.email }}</td>
+    <td>{{ a.department }}</td>
+    <td>{{ a.municipality }}</td>
+    <td>
+        <a class="delete-btn"
+           href="/admin/delete_authority/{{ a.authority_id }}"
+           onclick="return confirm('Are you sure you want to remove this authority?')">
+           Remove
+        </a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+<a href="/admin/dashboard" class="back">⬅ Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>

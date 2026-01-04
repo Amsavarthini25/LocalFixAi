@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Authority Dashboard{% endblock %}
+
+{% block content %}
+<div class="page-container">
+
+    <h2>{{ department }} Department – Complaints</h2>
+    <p class="subtitle">
+        {% if sla_view %}
+            Showing SLA Impacting Complaints
+        {% else %}
+            Complaints assigned to your department
+        {% endif %}
+    </p>
+
+    {% if complaints %}
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Issue</th>
+                        <th>Priority</th>
+                        <th>Citizen</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in complaints %}
+                    <tr>
+                        <td>#{{ c.complaint_id }}</td>
+                        <td>{{ c.issue_type }}</td>
+                        <td>
+                            <span class="priority {{ c.priority|lower }}">
+                                {{ c.priority }}
+                            </span>
+                        </td>
+                        <td>{{ c.citizen_name }}</td>
+                        <td>{{ c.phone_no }}</td>
+                        <td>
+                            {{ c.address }}<br>
+                            {{ c.municipality }}, {{ c.city }}, {{ c.state }}
+                        </td>
+                        <td>{{ c.created_at.strftime('%d %b %Y') }}</td>
+                        <td>
+                            <a href="/authority/complaint/{{ c.complaint_id }}"
+                               class="view-btn">
+                                View
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p>No complaints assigned to your department yet.</p>
+    {% endif %}
+
+</div>
+{% endblock %}

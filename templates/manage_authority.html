@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Manage Authorities</title>
+<style>
+body{
+    font-family:Arial;
+    background:#f4f6f8;
+}
+.container{
+    width:95%;
+    max-width:950px;
+    margin:50px auto;
+    background:#fff;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 4px 12px rgba(0,0,0,.1);
+}
+h2{text-align:center;margin-bottom:20px;}
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+th, td{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+    text-align:center;
+}
+th{
+    background:#28a745;
+    color:white;
+}
+tr:hover{
+    background:#f1f1f1;
+}
+.edit-btn{
+    background:#ffc107;
+    color:black;
+    padding:6px 12px;
+    border-radius:4px;
+    text-decoration:none;
+}
+.edit-btn:hover{
+    background:#e0a800;
+}
+.back{
+    margin-top:20px;
+    display:inline-block;
+    text-decoration:none;
+    color:#007bff;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Manage Authorities</h2>
+
+<table>
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Department</th>
+    <th>Municipality</th>
+    <th>Action</th>
+</tr>
+
+{% for a in authorities %}
+<tr>
+    <td>{{ a.authority_id }}</td>
+    <td>{{ a.name }}</td>
+    <td>{{ a.email }}</td>
+    <td>{{ a.department }}</td>
+    <td>{{ a.municipality }}</td>
+    <td>
+        <a class="edit-btn" href="/admin/edit_authority/{{ a.authority_id }}">
+            Edit
+        </a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+<a href="/admin/dashboard" class="back">⬅ Back to Dashboard</a>
+</div>
+
+</body>
+</html>
